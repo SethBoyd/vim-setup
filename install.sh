@@ -16,6 +16,10 @@ sudo make install
 
 sudo npm install -g jsctags coffee-script coffeelint
 
+cd ~/.vim/
+git submodule init
+git submodule update --recursive
+
 cd ~/.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
 
