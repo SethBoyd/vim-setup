@@ -23,3 +23,5 @@ git submodule update --recursive
 cd ~/.vim/bundle/YouCompleteMe/
 ./install.sh --clang-completer
 
+# Ubuntu expects vim.gtk for the default editor
+sudo ln -s /usr/bin/gvim /usr/bin/vim.gtk
