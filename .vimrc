@@ -7,7 +7,6 @@
 "   \_/ |_|_| |_| |_|_|  \___|
 "
 " Seth's .vimrc file
-"
 
 " Section: Pathogen {{{1
 "--------------------------------------------------------------------------
@@ -257,9 +256,9 @@ set showbreak=              " Show for lines that have been wrapped, like Emacs
 set showmatch               " Hilight matching braces/parens/etc.
 set sidescrolloff=3         " Keep cursor away from this many chars left/right
 set smartcase               " Lets you search for ALL CAPS
-set softtabstop=4           " Spaces 'feel' like tabs
+set softtabstop=2           " Spaces 'feel' like tabs
 set suffixes+=.pyc          " Ignore these files when tab-completing
-set tabstop=4               " The One True Tab
+set tabstop=2               " The One True Tab
 set wildmenu                " Show possible completions on command line
 set wildmode=list:longest,full " List all options and complete
 set wildignore=*.class,*.o,*~,*.pyc,.git,node_modules  " Ignore certain files in tab-completion
@@ -319,7 +318,7 @@ function! Rename(name, bang)
 endfunction
 
 
-" Section: Python specifics {{{1
+" Section: Python specifics {{{1"{{{
 "--------------------------------------------------------------------------
 
 if has('python')
@@ -329,7 +328,7 @@ import sys
 sys.path.append(os.path.join(os.getenv('HOME'), '.vim', 'python'))
 EOF
 endif
-
+"}}}
 " Section: Plugin settings {{{1
 "--------------------------------------------------------------------------
 
@@ -376,6 +375,8 @@ nmap ; :CtrlPBuffer<CR>
 let g:syntastic_enable_signs=1
 let g:syntastic_auto_jump=0
 let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
+let g:syntastic_auto_loc_list=1 " Display error list when there are any
+let g:syntastic_loc_list_height=5
 
 " enable filetype plugins -- e.g., ftplugin/xml.vim
 filetype plugin indent on
