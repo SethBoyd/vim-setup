@@ -405,88 +405,90 @@ endif
 " Helper to initialize Zenburn colors in 256-color mode.
 function! ColorTermZenburn()
   colorscheme zenburn
-  highlight Normal ctermbg=234
+  "highlight Normal ctermbg=234
   let g:zenburn_high_Contrast = 1
 endfunction
 
 " Make sure colored syntax mode is on, and make it Just Work with newer 256
 " color terminals like iTerm2.
-if !has('gui_running')
-  if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
-    set t_Co=256
-    call ColorTermZenburn()
-  elseif has("terminfo")
-    colorscheme default
-    set t_Co=8
-    set t_Sf=[3%p1%dm
-    set t_Sb=[4%p1%dm
-  else
-    colorscheme default
-    set t_Co=8
-    set t_Sf=[3%dm
-    set t_Sb=[4%dm
-  endif
-endif
+"if !has('gui_running')
+"  if $TERM == "xterm-256color" || $TERM == "screen-256color" || $COLORTERM == "gnome-terminal"
+"    set t_Co=256
+"    call ColorTermZenburn()
+"  elseif has("terminfo")
+"    colorscheme default
+"    set t_Co=8
+"    set t_Sf=[3%p1%dm
+"    set t_Sb=[4%p1%dm
+"  else
+"    colorscheme default
+"    set t_Co=8
+"    set t_Sf=[3%dm
+"    set t_Sb=[4%dm
+"  endif
+"endif
 syntax on
+
+colorscheme wombat
 
 " window splits & ruler were too bright - change to white on grey
 " (shouldn't change GUI or non-color term appearance)
-highlight StatusLine   cterm=NONE ctermbg=blue ctermfg=white
-highlight StatusLineNC cterm=NONE ctermbg=black ctermfg=white
-highlight VertSplit    cterm=NONE ctermbg=black ctermfg=white
+"highlight StatusLine   cterm=NONE ctermbg=blue ctermfg=white
+"highlight StatusLineNC cterm=NONE ctermbg=black ctermfg=white
+"highlight VertSplit    cterm=NONE ctermbg=black ctermfg=white
 
 " unfortunately, taglist.vim's filenames is linked to LineNr, which sucks
-highlight def link MyTagListFileName Statement
-highlight def link MyTagListTagName Question
+"highlight def link MyTagListFileName Statement
+"highlight def link MyTagListTagName Question
 
 " turn off coloring for CDATA
-highlight def link xmlCdata NONE
+"highlight def link xmlCdata NONE
 
 " custom incorrect spelling colors
-highlight SpellBad     term=underline cterm=underline ctermbg=NONE ctermfg=red
-highlight SpellCap     term=underline cterm=underline ctermbg=NONE ctermfg=blue
-highlight SpellRare    term=underline cterm=underline ctermbg=NONE ctermfg=magenta
-highlight SpellLocal   term=underline cterm=underline ctermbg=NONE ctermfg=cyan
+"highlight SpellBad     term=underline cterm=underline ctermbg=NONE ctermfg=red
+"highlight SpellCap     term=underline cterm=underline ctermbg=NONE ctermfg=blue
+"highlight SpellRare    term=underline cterm=underline ctermbg=NONE ctermfg=magenta
+"highlight SpellLocal   term=underline cterm=underline ctermbg=NONE ctermfg=cyan
 
 " ignore should be... ignored
-highlight Ignore cterm=bold ctermfg=black
-highlight clear FoldColumn
-highlight def link FoldColumn Ignore
-highlight clear Folded
-highlight link Folded Ignore
-highlight clear LineNr
-highlight! def link LineNr Ignore
+"highlight Ignore cterm=bold ctermfg=black
+"highlight clear FoldColumn
+"highlight def link FoldColumn Ignore
+"highlight clear Folded
+"highlight link Folded Ignore
+"highlight clear LineNr
+"highlight! def link LineNr Ignore
 
 " nice-looking hilight if I remember to set my terminal colors
-highlight clear Search
-highlight Search term=NONE cterm=NONE ctermfg=white ctermbg=black
+"highlight clear Search
+"highlight Search term=NONE cterm=NONE ctermfg=white ctermbg=black
 
 " make hilighted matching parents less offensive
-highlight clear MatchParen
-highlight link MatchParen Search
+"highlight clear MatchParen
+"highlight link MatchParen Search
 
 " colors for NERD_tree
-highlight def link NERDTreeRO NERDTreeFile
+"highlight def link NERDTreeRO NERDTreeFile
 
 " make trailing spaces visible
-highlight SpecialKey ctermbg=Yellow guibg=Yellow
+"highlight SpecialKey ctermbg=Yellow guibg=Yellow
 
 " make menu selections visible
-highlight PmenuSel ctermfg=black ctermbg=magenta
+"highlight PmenuSel ctermfg=black ctermbg=magenta
 
 " the sign column slows down remote terminals
-highlight clear SignColumn
-highlight link SignColumn Ignore
+"highlight clear SignColumn
+"highlight link SignColumn Ignore
 
 " Markdown could be more fruit salady.
-highlight link markdownH1 PreProc
-highlight link markdownH2 PreProc
-highlight link markdownLink Character
-highlight link markdownBold String
-highlight link markdownItalic Statement
-highlight link markdownCode Delimiter
-highlight link markdownCodeBlock Delimiter
-highlight link markdownListMarker Todo
+"highlight link markdownH1 PreProc
+"highlight link markdownH2 PreProc
+"highlight link markdownLink Character
+"highlight link markdownBold String
+"highlight link markdownItalic Statement
+"highlight link markdownCode Delimiter
+"highlight link markdownCodeBlock Delimiter
+"highlight link markdownListMarker Todo
 
 " Section: Coffee-Script Support {{{1
 "--------------------------------------------------------------------------
