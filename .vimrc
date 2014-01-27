@@ -295,6 +295,28 @@ function! HighlightTooLongLines()
   endif
 endfunction
 
+" Make Youcompleteme and Ultisnips play nicely
+" http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
+let g:ulti_expand_res == -1
+function! g:UltiSnips_Complete()
+    call UltiSnips_ExpandSnippet()
+    if g:ulti_expand_res == 0
+        if pumvisible()
+            return "\<C-n>"
+        else
+            call UltiSnips_JumpForwards()
+            if g:ulti_jump_forwards_res == 0
+               return "\<TAB>"
+            endif
+        endif
+    endif
+    return ""
+endfunction
+
+au BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:UltiSnips_Complete()<cr>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsListSnippets="<c-e>"
+
 " Rename.vim  -  Rename a buffer within Vim and on the disk
 " Copyright June 2007 by Christian J. Robinson <infynity@onewest.net>
 " Distributed under the terms of the Vim license.  See ":help license".
