@@ -297,7 +297,7 @@ endfunction
 
 " Make Youcompleteme and Ultisnips play nicely
 " http://stackoverflow.com/questions/14896327/ultisnips-and-youcompleteme
-let g:ulti_expand_res == -1
+let g:ulti_expand_res=-1
 function! g:UltiSnips_Complete()
     call UltiSnips_ExpandSnippet()
     if g:ulti_expand_res == 0
